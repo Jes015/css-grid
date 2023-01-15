@@ -13,17 +13,21 @@
     padding: 0px;
 }
 body{
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px calc(100vh - 50px) 50px;
     background-color: var(--primary-Color);
     color:var(--text-Color);
     font-family: var(--primary-Font);
-    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 50px repeat(2, calc(53.9vh - 50px)) 50px;
+    grid-template-areas:
+    "header header"
+    "aside main"
+    "aside ."
+    "footer footer";
 }
 
 header{
+    grid-area: header;
     display: grid;
     grid-template-columns: 100px 1fr;
     align-items: center;
@@ -35,12 +39,19 @@ header{
 }
 
 main{
+    grid-area: main;
     display: grid;
-    grid-template-columns: 18vw 82vw;
-    grid-template-rows: 1fr;
+    background-color: var(--terceary-Color);
+    border-bottom:2px solid red;
 }
 
+aside{
+    grid-area:aside;
+}
 
+footer{
+    grid-area:footer;
+}
 
 header nav ul{
     display: flex;
@@ -55,26 +66,10 @@ header nav ul li{
     cursor: pointer;
 }
 
-.main-nav{
+aside{
     background-color: var(--url-background);
 }
 
-.main-edit{
+footer{
     background-color: var(--secundary-Color);
-    display: grid;
-    grid-template-columns: repeat(12, 70px);
-    grid-template-rows: repeat(50px);
-    gap: 25px;
-}
-
-.prueba-grid-line{
-    background-color: url(--url-background);
-    border:2px solid var(--url-background)
-}
-
-.prueba-grid-line:nth-child(5){
-    color: aqua;
-    grid-column: 7/8;
-    grid-row: 30/31;
-
 }
