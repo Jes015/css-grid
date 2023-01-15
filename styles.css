@@ -2,7 +2,7 @@
     --url-background: rgb(10,10,10);
     --primary-Color: rgb(93, 27, 155);
     --secundary-Color: rgb(25,25,25);
-    --terceary-Color: rgb(241, 238, 11);
+    --terceary-Color: rgb(75, 75, 75);
     --text-Color:rgb(255,255,255);
     --primary-Font: 'PT Sans', sans-serif;
 }
@@ -13,17 +13,17 @@
     padding: 0px;
 }
 body{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 50px calc(150vh - 50px) 50px;
+    grid-template-areas:
+    "header header"
+    "main   aside"
+    "footer aside";
+
     background-color: var(--primary-Color);
     color:var(--text-Color);
     font-family: var(--primary-Font);
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    grid-template-rows: 50px calc(100vh - 50px) 50px;
-    grid-template-areas:
-    "header header"
-    "main aside"
-    "footer aside"
-
 }
 
 header{
@@ -39,26 +39,33 @@ header{
 }
 
 main{
-    grid-area:main;
+    text-align: center;
     background-color: rgb(23,23,23);
+    border-bottom: 2px solid var(--primary-Color);
+    
+    grid-area:main;
     display: grid;
-    grid-template-columns: repeat(4, 300px);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 50px);
-}
-
-div{
-    border: 1px solid rgb(43,43,43);
-    overflow: hidden;
+    
+    grid-auto-rows: 100px;
+    /*template-columns > auto-columns*/
+    grid-auto-columns: 500px;
 }
 
 aside{
     grid-area:aside;
-    background-color: white;
+    background-color: var(--terceary-Color);
 }
 
 footer{
     grid-area:footer;
-    background-color: bisque;
+    background-color: var(--secundary-Color);
+}
+
+div{
+    border:2px solid var(--terceary-Color);
+    overflow:hidden;
 }
 
 header nav ul{
@@ -74,10 +81,11 @@ header nav ul li{
     cursor: pointer;
 }
 
-.main-nav{
-    background-color: var(--url-background);
+div:nth-child(1){
+    background-color: var(--primary-Color);
+    grid-column: span 4
 }
-
-.main-edit{
-    background-color: var(--secundary-Color);
+div:nth-child(14){
+    background-color: var(--primary-Color);
+    grid-column: span 4
 }
