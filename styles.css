@@ -37,9 +37,32 @@ header{
 
 main{
     display: grid;
+    grid-template-columns: repeat(3, 160px);
+    grid-template-rows: repeat(2, 160px);
+    justify-content: start;
     background-color: var(--secundary-Color);
     grid-column: 1/2;
     grid-row:2/3;
+
+    /*property values start, end, center, stretch(default), etc..*/
+    justify-items: start; 
+    align-items: center;
+}
+
+div{
+    border:2px solid var(--url-background)
+}
+
+div:nth-child(1){
+    order:1
+}
+
+div:nth-child(2){
+    order:-2
+}
+
+div:nth-child(4){
+    order:-1
 }
 
 aside{
