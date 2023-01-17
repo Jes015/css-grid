@@ -1,7 +1,8 @@
 :root{
-    --primary-Color: rgb(55, 57, 55);
+    --url-background: rgb(10,10,10);
+    --primary-Color: rgb(93, 27, 155);
     --secundary-Color: rgb(25,25,25);
-    --terceary-Color: rgb(46, 46, 42);
+    --terceary-Color: rgb(241, 238, 11);
     --text-Color:rgb(255,255,255);
     --primary-Font: 'PT Sans', sans-serif;
 }
@@ -11,21 +12,19 @@
     margin: 0px;
     padding: 0px;
 }
-
 body{
     background-color: var(--primary-Color);
     color:var(--text-Color);
     font-family: var(--primary-Font);
+
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 100px;
     grid-template-rows: 50px calc(100vh - 50px) 50px;
-    grid-template-areas:
-    "header header header" 
-    "main main aside" 
-    "footer footer footer"
+    grid-template-areas: "header header" "main aside" "footer footer"
 }
 
 header{
+
     grid-area:header;
     display: grid;
     grid-template-columns: 100px auto;
@@ -34,34 +33,55 @@ header{
     overflow: hidden;
     
     background-color: var(--secundary-Color);
+    border-bottom: 1px solid var(--primary-Color);
 }
 
 main{
     grid-area:main;
     display: grid;
-    grid-auto-flow: row dense;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(5, 80px);
-
-    background-color: var(--primary-Color);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    background-color:var(--url-background);
 }
 
 div{
-    border: 1px solid
+    border: 2px solid var(--secundary-Color)
 }
-
-div:nth-child(8){
-    grid-column: span 3;
+div:nth-child(1){
+    background-color: rgb(109, 54, 109);
+    grid-row: 1/3;
+    grid-column: 1/3
+}
+div:nth-child(2){
+    background-color: rgb(109, 54, 54);
+    grid-row: 3/5;
+    grid-column: 1/3
+}
+div:nth-child(3){
+    background-color: rgb(99, 109, 54);
+    grid-row: 1/3;
+    grid-column: 3/5
+}
+div:nth-child(4){
+    background-color: rgb(54, 109, 61);
+    grid-row: 3/5;
+    grid-column: 3/5
+}
+div:nth-child(5){
+    opacity: 0.5;
+    background-color: rgb(54, 83, 109);
+    grid-row: 2/4;
+    grid-column: 2/4
 }
 
 aside{
     grid-area:aside;
-    background-color: var(--terceary-Color);
+    background-color: red;
 }
 
 footer{
     grid-area:footer;
-    background-color: var(--secundary-Color);
+    background-color:var(--terceary-Color);
 }
 
 header nav ul{
